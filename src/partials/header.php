@@ -5,45 +5,30 @@ if (session_status() === PHP_SESSION_NONE) {
 ?>
 
 <!DOCTYPE html>
-<<<<<<< HEAD
-=======
-
->>>>>>> e30f6dcfda5df6fd1c43cb213c9404864cd29a49
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-<<<<<<< HEAD
 
     <meta name="description" content="Hệ thống thương mại điện tử về sách">
     <?php
     $title = "SAKURA - HỆ THỐNG THƯƠNG MẠI ĐIỆN TỬ VỀ SÁCH";
-=======
-    <meta name="description" content="Hệ thống thương mại điện tử về sách">
-    <?php
-    $title = "HỆ THỐNG THƯƠNG MẠI ĐIỆN TỬ VỀ SÁCH";
->>>>>>> e30f6dcfda5df6fd1c43cb213c9404864cd29a49
     $name = "Hệ thống thương mại điện tử về sách";
     ?>
     <title><?php echo $title ?></title>
 
-<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/style_user.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-=======
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
->>>>>>> e30f6dcfda5df6fd1c43cb213c9404864cd29a49
     <script src="https://apis.google.com/js/platform.js" async defer>
         {
             lang: 'vi'
         }
     </script>
-<<<<<<< HEAD
 </head>
 
 <body>
@@ -65,31 +50,15 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
         </div>
     </nav>
-=======
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="plugins/select2/select2.min.css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="fonts/font-slider.css" type="text/css">
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-</head>
-
-<body>
->>>>>>> e30f6dcfda5df6fd1c43cb213c9404864cd29a49
     <header class="container">
         <div class="row">
             <div class="col-md-4" style="margin-bottom:25px">
                 <div id="logo">
-<<<<<<< HEAD
                     <h5><img src="<?php echo '/images/sakura-bookstore-logo.png'; ?>" alt="logo" width="50" height="50"> NHÀ SÁCH SAKURA</h5>
-=======
-                    <h5>THƯƠNG MẠI ĐIỆN TỬ VỀ SÁCH</h5>
->>>>>>> e30f6dcfda5df6fd1c43cb213c9404864cd29a49
                 </div>
             </div>
             <div class="col-md-4">
                 <form class="form-search" method="GET" action="timkiem.php">
-<<<<<<< HEAD
                     <input type="text" class="input-medium search-query" style="margin-top: 10px;" name="txttimkiem" required>
                     <button type="submit" name="tk" class="btn"><span class="fas fa-search"></span></button>
                 </form>
@@ -281,29 +250,3 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
         </div>
     </nav>
-=======
-                    <input type="text" class="input-medium search-query" name="txttimkiem" required>
-                    <button type="submit" name="tk" class="btn"><span class="glyphicon glyphicon-search"></span></button>
-                </form>
-            </div>
-            <div class="col-md-4">
-                <div id="cart"><a class="btn btn-1" href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span>Giỏ hàng (<?php
-                    $ok = 1;
-                    if (isset($_SESSION['cart'])) {
-                        foreach ($_SESSION['cart'] as $key => $value) {
-                        if (isset($key)) {
-                            $ok = 2;
-                        }
-                        }
-                    }
-                    if ($ok == 2) {
-                    echo count($_SESSION['cart']);
-                    } else {
-                        echo   "0";
-                        }
-               ?>)</a></div>
-            </div>
-        </div>
-    </header>
-</body>
->>>>>>> e30f6dcfda5df6fd1c43cb213c9404864cd29a49
