@@ -1,18 +1,5 @@
-<<<<<<< HEAD
 <?php
 require_once __DIR__ . '/../src/bootstrap.php';
-=======
-
-<?php
-    include __DIR__ . '/../src/partials/header.php';
-?>
-
-<body>
-   <header>
-    
-   </header>
-   <nav>
->>>>>>> e30f6dcfda5df6fd1c43cb213c9404864cd29a49
 
 use CT275\Labs\Sach;
 use CT275\Labs\Paginator;
