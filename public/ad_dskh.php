@@ -4,6 +4,7 @@ ob_start();
 <?php
 include "../src/partials/ad_head.php";
 ?>
+
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         <?php
@@ -19,7 +20,7 @@ include "../src/partials/ad_head.php";
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h4>
-                        Danh sách 
+                        Danh sách
                         <small class="light">Khách hàng</small>
                     </h4>
                     <ol class="breadcrumb">
@@ -33,8 +34,6 @@ include "../src/partials/ad_head.php";
                 <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
-
-
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Quản lý khách hàng</h3>
@@ -42,7 +41,7 @@ include "../src/partials/ad_head.php";
                                 <div class="box-body">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
-                                            <tr>
+                                            <tr class="text-center">
                                                 <th>Email</th>
                                                 <th>Họ tên</th>
                                                 <th>Số điện thoại</th>
@@ -51,16 +50,16 @@ include "../src/partials/ad_head.php";
                                         <tbody>
                                             <?php
                                             require '../src/myconnect.php';
-                                            $sql = "SELECT email,HoTen,DienThoai from loginuser Order by HoTen  ";
+                                            $sql = "SELECT emaildn,hoTen,dienThoai from nguoiDung Order by hoTen  ";
                                             $result = $conn->query($sql);
                                             if ($result->num_rows > 0) {
                                                 // output data of each row
                                                 while ($row = $result->fetch_assoc()) {
                                             ?>
                                                     <tr>
-                                                        <td><?php echo $row["email"] ?></td>
-                                                        <td><?php echo $row["HoTen"] ?></td>
-                                                        <td><?php echo $row["DienThoai"] ?></td>
+                                                        <td><?php echo $row["emaildn"] ?></td>
+                                                        <td><?php echo $row["hoTen"] ?></td>
+                                                        <td><?php echo $row["dienThoai"] ?></td>
                                                     </tr>
                                             <?php
                                                 }

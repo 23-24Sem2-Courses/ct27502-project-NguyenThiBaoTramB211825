@@ -33,86 +33,59 @@ include "../src/partials/ad_head.php";
                     </ol>
                 </section>
                 <hr>
-
-
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
-
-
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Danh sách hóa đon</h3>
+                                    <h3 class="box-title">Danh sách hóa đơn</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
-                                            <tr>
-                                                <th>Số đơn hàng</th>
-                                                <th>Tên Sách</th>
-                                                <th>Số lượng</th>
-                                                <th>Đơn giá</th>
-                                                <th>Thành tiền</th>
-                                                <th>Ngày giao hàng </th>
-                                                <th>Dịch vụ</th>
+                                            <tr class="text-center">
+                                                <th>Số hóa đơn</th>
+                                                <th>Ngày lập</th>
+                                                <th>Tên khách hàng</th>
+                                                <th>Số điện thoại khách hàng</th>
+                                                <th>Địa chỉ giao hàng</th>
+                                                <th>Hình thức thanh toán</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
                                             <?php
-                                            require '../inc/myconnect.php';
-                                            $sql = "SELECT h.sodh,soluong,dongia,h.thanhtien
-                         ,s.Ten as tensanpham,ngaygiao,madv
-                         from chitiethoadon c 
-                         LEFT JOIN sanpham s on s.ID= c.masp
-                         LEFT JOIN hoadon h on h.sodh= c.sodh Order by tensanpham  ";
+                                            require '../src/myconnect.php';
+                                            $sql = "SELECT h.soHD,h.ngayLap, nd.hoTen as HTKH, nd.dienThoai as DTKH, h.dcGiaoHang, h.hinhThucTT
+                                                from hoaDon h
+                                                join nguoiDung nd on nd.emaildn = h.emaildn
+                                                Order by h.soHD";
                                             $result = $conn->query($sql);
+
                                             if ($result->num_rows > 0) {
                                                 // output data of each row
                                                 while ($row = $result->fetch_assoc()) {
                                             ?>
                                                     <tr>
-                                                        <td><?php echo $row["sodh"] ?></td>
-                                                        <td><a href="chitiethd.php?sodh=<?php echo $row["sodh"] ?>" style="color:black"><?php echo $row["tensanpham"] ?> </a>
-                                                        </td>
-                                                        <td><?php echo $row["soluong"] ?></td>
-                                                        <td><?php echo $row["dongia"] ?>.000 VNĐ</td>
-                                                        <td><?php echo $row["thanhtien"] ?>0 VNĐ</td>
-                                                        <td><?php
-                                                            //chuyen ngaygiao thanh kieu  ngay thang nam
-                                                            $date = date_create($row["ngaygiao"]);
-                                                            echo date_format($date, "d/m/Y");
-                                                            ?></td>
+                                                        <td><a href="ad_chitiethd.php?soHD=<?php echo $row["soHD"] ?>" style="color:black"><?php echo $row["soHD"] ?></td>
                                                         <td>
                                                             <?php
-                                                            if ($row["madv"] != "") {
-                                                            ?>
-                                                                <?php
-                                                                $ma = $row["madv"];
-                                                                // $madv= implode(",",$ma);
-                                                                $sql = "SELECT tendv from dichvu where madv  in ($ma)";
-                                                                $results = $conn->query($sql);
-                                                                if ($results->num_rows > 0) {
-                                                                    // output data of each row
-                                                                    while ($s = $results->fetch_assoc()) {
-                                                                        // output data of each row
-                                                                        echo "<p>" . $s["tendv"] . "</p>";
-                                                                    }
-                                                                }
-                                                                ?>
-                                                            <?php
-                                                            }
+                                                            //chuyen ngaygiao thanh kieu  ngay thang nam
+                                                            $date = date_create($row["ngayLap"]);
+                                                            echo date_format($date, "d/m/Y");
                                                             ?>
                                                         </td>
-                                                    </tr>
 
+                                                        <td><?php echo $row["HTKH"] ?></td>
+                                                        <td><?php echo $row["DTKH"] ?></td>
+                                                        <td><?php echo $row["dcGiaoHang"] ?></td>
+                                                        <td><?php echo $row["hinhThucTT"] ?></td>
+                                                    </tr>
                                             <?php
 
                                                 }
                                             }
                                             ?>
-
 
                                         </tbody>
                                     </table>
@@ -128,10 +101,7 @@ include "../src/partials/ad_head.php";
                 <!-- /.content -->
             </div><!-- /.content-wrapper -->
             <?php
-            include "footer.php";
-            ?>
-            <?php
-            include "ControlSidebar.php";
+            include "../src/partials/ad_footer.php";
             ?>
             <!-- Control Sidebar -->
 

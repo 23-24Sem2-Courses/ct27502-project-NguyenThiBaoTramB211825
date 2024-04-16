@@ -31,6 +31,8 @@ include "../src/partials/ad_head.php";
                         <li class="active">> Quản lý nhà xuất bản</li>
                     </ol>
                 </section>
+                <hr>
+                
 
                 <!-- Main content -->
                 <section class="content">

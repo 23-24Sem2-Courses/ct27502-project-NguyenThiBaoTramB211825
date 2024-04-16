@@ -1,19 +1,8 @@
-<aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
+<br>
+<aside class="main-sidebar h-100">
     <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <!-- <div class="user-panel">
-            <div class="pull-left image">
-                <img src="../images/lgadmin.jpg" class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-                <p>Admin</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-        </div> -->
-
         <div class="sidebar-header">
-            <i class="fa-solid fa-user-tie p-1"></i><span>Admin</span>
+            <i class="fa-solid fa-user-tie px-2"></i><span>Admin</span>
         </div>
         <hr class="bg-info">
 
@@ -50,8 +39,5 @@
 
             </ul>
         </div>
-
-
-
     </section>
     <!-- /.sidebar -->

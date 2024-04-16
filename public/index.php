@@ -18,6 +18,7 @@ $paginator = new Paginator(
 $books = $book->paginate($paginator->recordOffset, $paginator->recordsPerPage);
 $pages = $paginator->getPages(length: 3);
 
+include "login.php";
 include __DIR__ . '/../src/partials/header.php';
 ?>
 
@@ -86,11 +87,11 @@ include __DIR__ . '/../src/partials/header.php';
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="product" style="text-align: center;">
                     <div class="image">
-                        <img src="images/anh1.png" style="width:300px;height:300px" />
+                        <a href="product.php?id=S001"><img src="images/anh1.png" style="width:300px;height:300px" /></a>
                     </div>
                     <div class="caption">
                         <div class="name">
-                            <h3>Nguyên Lý Hệ quản trị cơ sở dữ liệu</h3>
+                            <h3><a href="product.php?id=S001">Nguyên Lý Hệ quản trị cơ sở dữ liệu</a></h3>
                         </div>
                         <div class="price" style="color: red;">40,000₫</div>
                     </div>
@@ -99,11 +100,11 @@ include __DIR__ . '/../src/partials/header.php';
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="product" style="text-align: center;">
                     <div class="image">
-                        <img src="images/anh8.png" style="width:300px;height:300px" />
+                        <a href="product.php?id=S008"><img src="images/anh8.png" style="width:300px;height:300px" /></a>
                     </div>
                     <div class="caption">
                         <div class="name">
-                            <h3>Giáo trình Triết học Mác-Lênin</h3>
+                            <h3><a href="product.php?id=S008">Giáo trình Triết học Mác-Lênin</a></h3>
                         </div>
                         <div class="price" style="color: red;">75,000₫</div>
                     </div>
@@ -112,11 +113,11 @@ include __DIR__ . '/../src/partials/header.php';
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="product" style="text-align: center;">
                     <div class="image">
-                        <img src="images/anh3.png" style="width:300px;height:300px" />
+                        <a href="product.php?id=S003"><img src="images/anh3.png" style="width:300px;height:300px" /></a>
                     </div>
                     <div class="caption">
                         <div class="name">
-                            <h3>Các giải pháp lập trình C#</h3>
+                            <h3><a href="product.php?id=S003">Các giải pháp lập trình C#</a></h3>
                         </div>
                         <div class="price" style="color: red;">50,000₫</div>
                     </div>

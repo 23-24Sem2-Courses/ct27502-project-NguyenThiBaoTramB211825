@@ -31,7 +31,7 @@ include "../src/partials/ad_head.php";
                         <li class="active"> > Thêm</li>
                     </ol>
                 </section>
-
+                    <hr>
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
@@ -45,26 +45,26 @@ include "../src/partials/ad_head.php";
                                 <form class="form-horizontal" method="POST" action="<?php include 'ad_xulytg.php' ?>">
                                     <div class="box-body m-5">
                                         <div class="form-group d-flex m-2 ">
-                                            <label for="maTG" class="col-sm-2 control-label text-center">ID</label>
-                                            <div class="col-sm-10">
+                                            <label for="maTG" class="offset-sm-2 col-sm-1 control-label">ID</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="maTG" placeholder="Nhập ID tác giả" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex  m-2">
-                                            <label for="tenTG" class="col-sm-2 control-label text-center">Tên tác giả</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="tenTG" placeholder="Nhập ten tác giả" required>
+                                            <label for="tenTG" class="offset-sm-2 col-sm-1 control-label">Tên tác giả</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" name="tenTG" placeholder="Nhập tên tác giả" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex m-2 ">
-                                            <label for="website" class="col-sm-2 control-label text-center">website</label>
-                                            <div class="col-sm-10">
+                                            <label for="website" class="offset-sm-2 col-sm-1 control-label">website</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="website" placeholder="Nhập website" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex m-2 ">
-                                            <label for="ghiChu" class="col-sm-2 control-label text-center">Ghi chú</label>
-                                            <div class="col-sm-10">
+                                            <label for="ghiChu" class="offset-sm-2 col-sm-1 control-label">Ghi chú</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="ghiChu" placeholder="Nhập ghi chú " required>
                                             </div>
                                         </div>

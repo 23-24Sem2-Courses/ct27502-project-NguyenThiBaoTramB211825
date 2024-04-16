@@ -65,6 +65,7 @@ include "../src/partials/ad_head.php";
                         <li class="active"> > Sửa </li>
                     </ol>
                 </section>
+                <hr>
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
@@ -80,23 +81,24 @@ include "../src/partials/ad_head.php";
                                 <!-- form start -->
                                 <form class="form-horizontal" method="POST" action="<?php include 'ad_xulysuanxb.php' ?>" enctype="multipart/form-data">
                                     <div class="box-body">
-                                        <div class="form-group d-flex  ">
-                                            <label for="inputEmail3" class="col-sm-2 control-label text-center">Tên</label>
-                                            <div class="col-sm-10">
+                                        <div class="form-group d-flex p-2  ">
+                                            <label for="inputEmail3" class="offset-sm-2 col-sm-1 control-label">Tên</label>
+                                            <div class="col-sm-6">
+                                                <input type="hidden" name="maNXB" value="<?php echo $row["maNXB"]; ?>">
                                                 <input type="text" class="form-control" name="name" value="<?php echo $row["tenNXB"] ?>" required>
                                             </div>
                                         </div>
 
 
-                                        <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Địa chỉ</label>
-                                            <div class="col-sm-10">
+                                        <div class="form-group d-flex  p-2 ">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label">Địa chỉ</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="diachi" required value="<?php echo $row["diaChi"] ?>">
                                             </div>
                                         </div>
-                                        <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Email</label>
-                                            <div class="col-sm-10">
+                                        <div class="form-group d-flex  p-2 ">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label">Email</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="email" required value="<?php echo $row["email"] ?>">
                                             </div>
                                         </div>

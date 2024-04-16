@@ -31,7 +31,8 @@ include "../src/partials/ad_head.php";
                         <li class="active">> Quản lý thể loại</li>
                     </ol>
                 </section>
-
+                <hr>
+                
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">

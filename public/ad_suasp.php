@@ -70,7 +70,9 @@ include "../src/partials/ad_head.php";
                         <li class="active"> > Sửa sách</li>
                     </ol>
                 </section>
+                <hr>
                 <!-- Main content -->
+
                 <section class="content">
                     <div class="row">
                         <!-- left column -->
@@ -88,27 +90,27 @@ include "../src/partials/ad_head.php";
 
                                         <!-- sach (maSach,tenSach,giaSach,hinhAnh, maTG, maTL, maNXB, namXuatBan, mota) -->
                                         <div class="form-group d-flex  ">
-                                            <label for="inputEmail3" class="col-sm-2 control-label text-center">Tên</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputEmail3" class=" offset-sm-2 col-sm-1 control-label ">Tên</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="name" value="<?php echo $row["tenSach"] ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Giá</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class=" offset-sm-2 col-sm-1 control-label ">Giá</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="gia" required value="<?php echo $row["giaSach"] ?>">
                                             </div>
                                         </div>
                                         <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Hình ảnh</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class=" offset-sm-2 col-sm-1 control-label ">Hình ảnh</label>
+                                            <div class="col-sm-6">
                                                 <input type="file" class="form-control" name="hinhanh" value="<?php echo $row["hinhAnh"] ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Ảnh hiện tại: </label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class=" offset-sm-2 col-sm-1 control-label ">Ảnh hiện tại: </label>
+                                            <div class="col-sm-6">
                                                 <img src="images/<?php echo $row["hinhAnh"] ?>" style="width:300px;height:300px">
                                             </div>
                                             <input type="hidden" class="form-control" name="anh" value="<?php echo $row["hinhAnh"] ?>">
@@ -117,8 +119,8 @@ include "../src/partials/ad_head.php";
 
 
                                         <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Tác giả</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class=" offset-sm-2 col-sm-1 control-label ">Tác giả</label>
+                                            <div class="col-sm-6">
                                                 <select class="form-control select2" style="width: 100%;" name="matg">
                                                     <?php
                                                     require '../src/myconnect.php';
@@ -143,8 +145,8 @@ include "../src/partials/ad_head.php";
                                             </div>
                                         </div>
                                         <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Thể loại</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Thể loại</label>
+                                            <div class="col-sm-6">
                                                 <select class="form-control select2" style="width: 100%;" name="matl">
                                                     <?php
                                                     require '../src/myconnect.php';
@@ -169,8 +171,8 @@ include "../src/partials/ad_head.php";
                                             </div>
                                         </div>
                                         <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Nhà xuất bản</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Nhà xuất bản</label>
+                                            <div class="col-sm-6">
                                                 <select class="form-control select2" style="width: 100%;" name="manhasx">
                                                     <?php
                                                     require '../src/myconnect.php';
@@ -196,15 +198,15 @@ include "../src/partials/ad_head.php";
                                         </div>
 
                                         <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Năm xuất bản</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Năm xuất bản</label>
+                                            <div class="col-sm-6">
                                                 <input type="number" class="form-control" name="namxb" required value="<?php echo $row["namXuatBan"] ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Mô tả</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Mô tả</label>
+                                            <div class="col-sm-6">
                                                 <textarea id="editor1" name="editor1" name="editor1" rows="10" cols="80">
                                                 <?php echo $row["mota"] ?>
                                                 </textarea>

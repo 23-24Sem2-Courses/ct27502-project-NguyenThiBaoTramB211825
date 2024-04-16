@@ -27,6 +27,7 @@ include "../src/partials/ad_head.php";
                         <li class="active">> Quản lý sách</li>
                     </ol>
                 </section>
+                <hr>
 
                 <!-- Main content -->
                 <section class="content">

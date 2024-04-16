@@ -19,28 +19,20 @@ include "../src/partials/ad_head.php";
             </div>
 
             <div class="content-wrapper col-md-10 p-2">
-                <!-- Content Header (Page header) -->
                 <?php
                 require '../src/myconnect.php';
-                // Kiểm tra xem có tham số id được truyền không
                 if (isset($_GET["id"])) {
-                    // Sử dụng prepared statements để thực thi truy vấn SQL an toàn
                     $id = $_GET["id"];
                     $query = "SELECT *
                                 FROM tacGia tg
                                 WHERE tg.maTG = ?";
-
-                    // Chuẩn bị truy vấn
                     $stmt = $conn->prepare($query);
-                    // Bind tham số
                     $stmt->bind_param("s", $id);
-                    // Thực thi truy vấn
                     $stmt->execute();
-                    // Lấy kết quả
+
                     $result = $stmt->get_result();
-                    // Kiểm tra số dòng trả về
                     if ($result->num_rows > 0) {
-                        // Lấy dòng dữ liệu
+
                         $row = $result->fetch_assoc();
                     } else {
                         // Xử lý khi không có dữ liệu trả về
@@ -66,12 +58,10 @@ include "../src/partials/ad_head.php";
                         <li class="active"> > Sửa</li>
                     </ol>
                 </section>
+                <hr>
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <!-- left column -->
-
-                        <!-- right column -->
                         <div class="col-md-12">
                             <!-- Horizontal Form -->
                             <div class="box box-info">
@@ -82,20 +72,21 @@ include "../src/partials/ad_head.php";
                                 <form class="form-horizontal  ad_suasp" method="POST" action="ad_xulysuatg.php" enctype=" multipart/form-data">
                                     <div class="box-body">
                                         <div class="form-group d-flex  ">
-                                            <label for="inputEmail3" class="col-sm-2 control-label text-center">Tên</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputEmail3" class="offset-sm-2 col-sm-1 control-label">Tên</label>
+                                            <div class="col-sm-6">
+                                                <input type="hidden" name="maTG" value="<?php echo $row["maTG"]; ?>">
                                                 <input type="text" class="form-control" name="tenTG" value="<?php echo $row["tenTG"] ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Website</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label">Website</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="website" required value="<?php echo $row["website"] ?>">
                                             </div>
                                         </div>
                                         <div class="form-group d-flex ">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Ghi chú </label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label">Ghi chú </label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="ghiChu" value="<?php echo $row["ghiChu"] ?>">
                                             </div>
                                         </div>

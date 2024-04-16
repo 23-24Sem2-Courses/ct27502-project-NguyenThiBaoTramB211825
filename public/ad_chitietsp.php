@@ -7,7 +7,6 @@ include "../src/partials/ad_head.php";
         <?php
         include "../src/partials/ad_header.php";
         ?>
-
         <div class="row flex">
             <div class="col-md-2">
                 <?php
@@ -64,6 +63,7 @@ include "../src/partials/ad_head.php";
                         <li class="active"> > Chi tiết sách</li>
                     </ol>
                 </section>
+                <hr>
 
                 <!-- Main content -->
                 <section class="content">
@@ -77,49 +77,50 @@ include "../src/partials/ad_head.php";
                             <div class="box box-info">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Chi tiết Sách</h3>
+                                    <br>
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
                                 <form class="form-horizontal">
                                     <div class="box-body">
                                         <div class="form-group d-flex">
-                                            <label class="col-sm-4 text-center">Tên:</label>
+                                            <label class="offset-sm-2 col-sm-2 "><strong>Tên sách:</strong>:</label>
                                             <div class="col-sm-6">
                                                 <p><?php echo $row["tenSach"] ?></p>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label class="col-sm-4 text-center ">Giá:</label>
+                                            <label class="offset-sm-2  col-sm-2"><strong>Giá sách: </strong></label>
                                             <div class="col-sm-6">
                                                 <p><?php echo $row["giaSach"] ?>.000 VNĐ</p>
                                             </div>
                                         </div>
 
                                         <div class="form-group d-flex">
-                                            <label class="col-sm-4 text-center">Hình ảnh:</label>
+                                            <label class="offset-sm-2  col-sm-2"><strong>Hình ảnh sách</strong></label>
                                             <div class="col-sm-6">
                                                 <p><img src="images/<?php echo $row["hinhAnh"] ?>" style="width:300px;height:300px"></p>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label class="col-sm-4 text-center">Tác giả:</label>
+                                            <label class="offset-sm-2  col-sm-2"><strong>Tác giả: </strong></label>
                                             <div class="col-sm-6">
                                                 <p><?php echo $row["tenTG"] ?></p>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label class="col-sm-4 text-center ">Thể loại:</label>
+                                            <label class="offset-sm-2  col-sm-2"><strong>Thể loại: </strong></label>
                                             <div class="col-sm-6">
                                                 <p><?php echo $row["tenTL"] ?></p>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label class="col-sm-4 text-center">Nhà xuất bản:</label>
+                                            <label class="offset-sm-2  col-sm-2"><strong>Nhà xuất bản:</strong></label>
                                             <div class="col-sm-6">
                                                 <p><?php echo $row["tenNXB"] ?></p>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label class="col-sm-4 text-center">Năm xuất bản:</label>
+                                            <label class="offset-sm-2  col-sm-2"><strong>Năm xuất bản:</strong></label>
                                             <div class="col-sm-6">
                                                 <p><?php echo $row["namXuatBan"] ?></p>
                                             </div>
@@ -127,7 +128,7 @@ include "../src/partials/ad_head.php";
 
 
                                         <div class="form-group d-flex">
-                                            <label class="col-sm-4 text-center">Mô tả: </label>
+                                            <label class="offset-sm-2  col-sm-2"><strong>Mô tả:</strong> </label>
                                             <div class="col-sm-6">
                                                 <p><?php echo $row["mota"] ?></p>
                                             </div>

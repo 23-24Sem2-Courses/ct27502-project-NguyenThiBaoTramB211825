@@ -44,13 +44,13 @@ include "../src/partials/ad_head.php";
                         $row = $result->fetch_assoc();
                     } else {
                         // Xử lý khi không có dữ liệu trả về
-                        echo "Không có thông tin sách được tìm thấy";
+                        echo "Không có thông tin thể loại được tìm thấy";
                     }
                     // Đóng kết nối và giải phóng bộ nhớ
                     $stmt->close();
                 } else {
                     // Xử lý khi không có hoặc id không hợp lệ
-                    echo "Không có thông tin sách được tìm thấy";
+                    echo "Không có thông tin thể loại được tìm thấy";
                 }
 
 
@@ -66,6 +66,7 @@ include "../src/partials/ad_head.php";
                         <li class="active"> > Sửa</li>
                     </ol>
                 </section>
+                <hr>
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
@@ -82,12 +83,13 @@ include "../src/partials/ad_head.php";
                                 <form class="form-horizontal ad_suasp" method="POST" action="ad_xulysuatl.php" enctype=" multipart/form-data">
                                     <div class="box-body">
                                         <div class="form-group d-flex  ">
-                                            <label for="inputEmail3" class="col-sm-2 control-label text-center">Tên</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputEmail3" class="offset-sm-2 col-sm-1 control-label">Tên</label>
+                                            <div class="col-sm-6">
+                                                <input type="hidden" name="maTL" value="<?php echo $row["maTL"]; ?>">
                                                 <input type="text" class="form-control" name="tenTL" value="<?php echo $row["tenTL"] ?>" required>
                                             </div>
                                         </div>
-                                     
+
                                         <div class="box-footer text-center">
                                             <a href="ad_qltl.php">
                                                 <button type="button" name="cancel" class="btn btn-danger m-2">Cancel</button>

@@ -6,7 +6,7 @@ ob_start();
 require "login.php";
 if (!isset($_SESSION['txtus'])) // If session is not set then redirect to Login Page
 {
-    header("Location:giohangchuacodnhap.php");
+    header("Location: cartforGuest.php");
 }
 ?>
 
@@ -51,39 +51,61 @@ if (is_countable($_SESSION['cart']) == 0) {
             </p>
         </div>
 
-        <div class="row">
-            <form name="form-rm" id="frm" method="post" action="removeFromCart.php">
-                <div class="product well">
-                    <div class="col-md-3">
-                        <div class="image">
-                            <img src="images/<?php echo $s["hinhAnh"] ?>" style="width: 300px;height:300px" />
+        <?php
+
+        require '../src/myconnect.php';
+
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $key  => $value) {
+                $item[] = $key;
+            }
+            $str = implode(",", $item);
+            $query = "SELECT s.maSach,s.tenSach,s.giaSach,s.hinhAnh,n.maNXB,n.tenNXB,s.namXuatBan,s.mota from sach s 
+				LEFT JOIN nhaXuatBan n on n.maNXB = s.maNXB
+				WHERE  s.maNXB  in ($str)";
+            $result = $conn->query($query);
+            $total = 0;
+            foreach ($result as $s) {
+        ?>
+
+
+                <div class="row">
+                    <form name="form-rm" id="frm" method="post" action="removeFromCart.php">
+                        <div class="product well">
+                            <div class="col-md-3">
+                                <div class="image">
+                                    <img src="images/<?php echo $s["hinhAnh"] ?>" style="width: 300px;height:300px" />
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="caption">
+                                    <div class="name">
+                                        <h3><a href="product.php?id=<?php echo $s["maNXB"] ?>"><?php echo $s["tenNXB"] ?></a></h3>
+                                    </div>
+                                    <div class="info">
+                                        <ul>
+                                            <li>Nhà xuất bản: <?php echo $s["tenNXB"] ?></li>
+                                        </ul>
+                                    </div>
+                                    <label class="form-label">Số lượng: </label>
+                                    <input class="form-control quantity" style="margin-right: 80px;width: 50px" min="1" max="99" type="number" name="qty[<?php echo $s["maSach"] ?>]" value="<?php echo $_SESSION['cart'][$s["maSach"]] ?>">
+                                    <div class="mb-3">
+                                        <input type="submit" name="update" style="margin-top: 31px" value="Cập nhật Sách này" class="btn btn-2" />
+                                    </div>
+                                    <hr>
+                                    <input type="submit" name="remove" value="Xóa Sách này" class="btn btn-outline-secondary float-end" />
+                                    <input type="hidden" name="idsprm" value="<?php echo $s["maSach"] ?>" />
+                                    <label style="color: red">Thành tiền: <?php echo $_SESSION['cart'][$s["maSach"]] * $s["giaSach"] ?>.000</label>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
                         </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="caption">
-                            <div class="name">
-                                <h3><a href="product.php?id=<?php echo $s["maSach"] ?>"><?php echo $s["tenSach"] ?></a></h3>
-                            </div>
-                            <div class="info">
-                                <ul>
-                                    <li>Nhà xuất bản: <?php echo $s["tenNXB"] ?></li>
-                                </ul>
-                            </div>
-                            <label class="form-label">Số lượng: </label>
-                            <input class="form-control quantity" style="margin-right: 80px;width: 50px" min="1" max="99" type="number" name="qty[<?php echo $s["maSach"] ?>]" value="<?php echo $_SESSION['cart'][$s["maSach"]] ?>">
-                            <div class="mb-3">
-                                <input type="submit" name="update" style="margin-top: 31px" value="Cập nhật Sách này" class="btn btn-2" />
-                            </div>
-                            <hr>
-                            <input type="submit" name="remove" value="Xóa Sách này" class="btn btn-outline-secondary float-end" />
-                            <input type="hidden" name="idsprm" value="<?php echo $s["maSach"] ?>" />
-                            <label style="color: red">Thành tiền: <?php echo $_SESSION['cart'][$s["maSach"]] * $s["giaSach"] ?>.000</label>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </form>
-            <?php $total += $_SESSION['cart'][$s["maSach"]] * $s["giaSach"] ?>
+                    </form>
+                    <?php $total += $_SESSION['cart'][$s["maSach"]] * $s["giaSach"] ?>
+            <?php
+            }
+        }
+            ?>
             <div class="row">
                 <a href="removeAllBooks.php" class="btn btn-2" style="margin-bottom: 31px">Xóa hết giỏ hàng</a>
 
@@ -107,11 +129,11 @@ if (is_countable($_SESSION['cart']) == 0) {
                                 <td><?php echo $total ?>.000</td>
                             </tr>
                         </table>
-                        <center><a href="dathang.php" class="btn btn-1">Đặt hàng</a></center>
+                        <center><a href="order.php" class="btn btn-1">Đặt hàng</a></center>
                     </div>
                 </div>
             </div>
-        </div>
+                </div>
     </div>
 </div>
 

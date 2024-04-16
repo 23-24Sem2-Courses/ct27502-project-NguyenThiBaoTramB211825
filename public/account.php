@@ -4,36 +4,68 @@ session_start();
 ?>
 
 <?php
-define('TITLE', 'Login');
-
-$loggedin = false;
-$kq = '';
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    if (!empty($_POST['email']) && !empty($_POST['password'])) {
-
-        if ((strtolower($_POST['email']) == 'thanh@gmail.com' || strtolower($_POST['email']) == 'tungvu@gmail.com') && ($_POST['password'] == '123')) {
-            $_SESSION['user'] = 'me';
-            $loggedin = true;
-        } else {
-            $kq = 'Địa chỉ email và mật khẩu không khớp!';
-        }
-    } else {
-        $kq = 'Hãy đảm bảo rằng bạn cung cấp đầy đủ địa chỉ email và mật khẩu!';
-    }
-}
-
-if ($loggedin) {
-    echo '<p>Bạn đã đăng nhập!</p>';
-} else {
-    echo '<p>Vui lòng đăng nhập lại!</p>';
-}
-
+include __DIR__ . '/../src/partials/header.php';
 ?>
 
 <?php
-include __DIR__ . '/../src/partials/header.php';
+$tk = "";
+$mk = "";
+$kq = "";
+if (isset($_POST['submit'])) {
+    require '../src/myconnect.php';
+    $tk = $_POST['txtus'];
+    $mk = $_POST['txtem'];
+    $sql = "SELECT * FROM nguoiDung where emaildn = '$tk'  and matKhau = '$mk'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $_SESSION['txtus'] = $tk;
+            $_SESSION['hoTen'] = $row["hoTen"];
+            $_SESSION['emaildn'] = $row["emaildn"];
+            $_SESSION['dienThoai'] = $row["dienThoai"];
+            header('Location: cart.php');
+            $row = $result->fetch_assoc();
+        }
+    } else {
+        $kq = "Thông tin không đúng, vui lòng kiểm tra lại";
+    }
+}
+?>
+
+<?php
+$email = "";
+$mk = "";
+$repass = "";
+$name = "";
+$dt = "";
+$kqdk = "";
+
+if (isset($_POST['dangky'])) {
+    require '../src/myconnect.php';
+    $name  = $_POST['fullname'];
+    $email = $_POST['email'];
+    $dt = $_POST['phone'];
+    $mk = $_POST['password'];
+    $repass = $_POST['repass'];
+    if ($repass != $mk) {
+        $kqdk = "Nhập lại mật khẩu không khớp.";
+    } else {
+        $sql = "INSERT INTO nguoiDung (emaildn,matKhau,hoTen,dienThoai) 
+        VALUES ('$email','$mk' ,'$name','$dt') ";
+        // echo  $mk;
+        if (mysqli_query($conn, $sql)) {
+            $email = "";
+            $mk = "";
+            $repass = "";
+            $name = "";
+            $dt = "";
+            $kqdk = "Đăng ký thành công.";
+        } else {
+            $kqdk = "Đăng ký không thành công. Vui lòng kiểm tra lại thông tin.";
+        }
+    }
+    mysqli_close($conn);
+}
 ?>
 
 <div id="page-content" class="single-page">
@@ -73,7 +105,7 @@ include __DIR__ . '/../src/partials/header.php';
                 </div>
                 <form name="form2" id="ff2" method="post" action="#">
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Họ Tên" name="fullname" id="firstname" value="<?php echo $name; ?>" required>
+                        <input type="text" class="form-control" placeholder="Họ tên" name="fullname" id="firstname" value="<?php echo $name; ?>" required>
                     </div>
                     <div class="mb-3">
                         <input type="email" class="form-control" placeholder="Email" name="email" id="email" value="<?php echo $email; ?>" required>
@@ -85,7 +117,7 @@ include __DIR__ . '/../src/partials/header.php';
                         <input type="password" class="form-control" placeholder="Mật khẩu" name="password" id="password" value="<?php echo $mk; ?>" required>
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" placeholder="Mật khẩu nhập lại" name="repass" id="repass" value="<?php echo $repass; ?>" required>
+                        <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="repass" id="repass" value="<?php echo $repass; ?>" required>
                     </div>
                     <button type="submit" name="dangky" class="btn btn-1">Đăng ký</button>
                     <P style="color:red"><?php echo $kqdk; ?></p>

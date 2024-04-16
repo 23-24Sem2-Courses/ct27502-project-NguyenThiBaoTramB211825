@@ -1,5 +1,5 @@
-    <br><br><br><br>
-    <footer class="main-footer ">
+    <br><br><br><br><br>
+    <footer class="main-footer">
 
         <div class="align-center">
             <b>Copyright &copy;</b> 2024

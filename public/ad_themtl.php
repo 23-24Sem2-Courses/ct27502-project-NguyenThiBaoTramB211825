@@ -31,6 +31,7 @@ include "../src/partials/ad_head.php";
                         <li class="active"> > Thêm</li>
                     </ol>
                 </section>
+                <hr>
 
                 <!-- Main content -->
                 <section class="content">
@@ -45,14 +46,14 @@ include "../src/partials/ad_head.php";
                                 <form class="form-horizontal" method="POST" action="<?php include 'ad_xulytl.php' ?>">
                                     <div class="box-body m-5">
                                         <div class="form-group d-flex m-2 ">
-                                            <label for="maTL" class="col-sm-2 control-label text-center">ID</label>
-                                            <div class="col-sm-10">
+                                            <label for="maTL" class="offset-sm-2 col-sm-1 control-label">ID</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="maTL" placeholder="Nhập ID thể loại" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex  m-2">
-                                            <label for="tenTL" class="col-sm-2 control-label text-center">Tên thể loại</label>
-                                            <div class="col-sm-10">
+                                            <label for="tenTL" class="offset-sm-2 col-sm-1 control-label">Tên thể loại</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="tenTL" placeholder="Nhập tên thể loại" required>
                                             </div>
                                         </div>

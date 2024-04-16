@@ -21,7 +21,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style_user.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer>
@@ -42,8 +42,8 @@ if (session_status() === PHP_SESSION_NONE) {
                         echo '<li class="nav-item"><a class="nav-link" href="account.php"><span class="fas fa-sign-in"></span> Đăng nhập</a></li>';
                         echo '<li class="nav-item"><a class="nav-link" href="account.php"><span class="fas fa-user-plus"></span> Đăng ký</a></li>';
                     } else {
-                        echo '<li class="nav-item"><span class="nav-link"><span class="fas fa-user"></span> Xin chào <b style="color: Tomato;">' . $_SESSION['HoTen'] . '</b></span></li>';
-                        echo '<li class="nav-item"><a class="nav-link" href="dangxuat.php"><span class="fas fa-sign-out"></span> Đăng xuất</a></li>';
+                        echo '<li class="nav-item"><span class="nav-link"><span class="fas fa-user"></span> Xin chào <b style="color: Tomato;">' . $_SESSION['hoTen'] . '</b></span></li>';
+                        echo '<li class="nav-item"><a class="nav-link" href="logout.php"><span class="fas fa-sign-out"></span> Đăng xuất</a></li>';
                     }
                     ?>
                 </ul>
@@ -54,11 +54,11 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="row">
             <div class="col-md-4" style="margin-bottom:25px">
                 <div id="logo">
-                    <h5><img src="<?php echo '/images/sakura-bookstore-logo.png'; ?>" alt="logo" width="50" height="50"> NHÀ SÁCH SAKURA</h5>
+                    <h5><a href="index.php"><img src="<?php echo '/images/sakura-bookstore-logo.png'; ?>" alt="logo" width="50" height="50"></a> NHÀ SÁCH SAKURA</h5>
                 </div>
             </div>
             <div class="col-md-4">
-                <form class="form-search" method="GET" action="timkiem.php">
+                <form class="form-search" method="GET" action="search.php">
                     <input type="text" class="input-medium search-query" style="margin-top: 10px;" name="txttimkiem" required>
                     <button type="submit" name="tk" class="btn"><span class="fas fa-search"></span></button>
                 </form>
@@ -106,44 +106,14 @@ if (session_status() === PHP_SESSION_NONE) {
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php
-                            require_once __DIR__ . '/../bootstrap.php';
-
-                            use CT275\Labs\Sach;
-
-                            // Truy vấn cơ sở dữ liệu để lấy danh sách thể loại
-                            $statement = $PDO->prepare('SELECT maTL, tenTL FROM theLoai');
-                            $statement->execute();
-                            $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-                            // Hiển thị danh sách thể loại dưới dạng liên kết trên thanh nav
-                            echo '<ul>';
-                            foreach ($categories as $category) {
-                                echo "<li><a href=\"category.php?matloai={$category['maTL']}\">{$category['tenTL']}</a></li>";
-                            }
-                            echo '</ul>';
-
-                            // Kiểm tra xem người dùng đã chọn một thể loại hay chưa
-                            if (isset($_GET['matloai']) && is_numeric($_GET['matloai'])) {
-                                $maTL = $_GET['matloai'];
-
-                                // Tạo một đối tượng Sach
-                                $book = new Sach($PDO);
-
-                                // Gọi hàm findbasedonCategory() để lấy danh sách các sách của thể loại
-                                $books = $book->findbasedonCategory($maNXB);
-
-                                // Kiểm tra xem có sách nào của thể loại đó hay không
-                                if ($books) {
-                                    echo "<h2>Danh sách sách của thể loại:</h2>";
-                                    echo "<ul>";
-                                    foreach ($books as $book) {
-                                        echo "<li>{$book->hinhAnh}</li>";
-                                        echo "<li>{$book->tenSach}</li>";
-                                        echo "<li>{$book->giaSach}</li>";
-                                    }
-                                    echo "</ul>";
-                                } else {
-                                    echo "Không tìm thấy sách của thể loại này.";
+                            require '../src/myconnect.php';
+                            $layTL = "SELECT maTL,tenTL from theLoai";
+                            $rstenTL = $conn->query($layTL);
+                            if ($rstenTL->num_rows > 0) {
+                                while ($row = $rstenTL->fetch_assoc()) {
+                            ?>
+                                    <li><a href="category.php?maTL=<?php echo $row["maTL"] ?>"><?php echo $row["tenTL"] ?></a></li>
+                            <?php
                                 }
                             }
                             ?>
@@ -155,42 +125,14 @@ if (session_status() === PHP_SESSION_NONE) {
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php
-                            require_once __DIR__ . '/../bootstrap.php';
-
-                            // Truy vấn cơ sở dữ liệu để lấy danh sách tác giả
-                            $statement = $PDO->prepare('SELECT maTG, tenTG FROM tacGia');
-                            $statement->execute();
-                            $authors = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-                            // Hiển thị danh sách tác giả dưới dạng liên kết trên thanh nav
-                            echo '<ul>';
-                            foreach ($authors as $author) {
-                                echo "<li><a href=\"category.php?matgia={$author['maTG']}\">{$author['tenTG']}</a></li>";
-                            }
-                            echo '</ul>';
-
-                            // Kiểm tra xem người dùng đã chọn một tác giả hay chưa
-                            if (isset($_GET['matgia']) && is_numeric($_GET['matgia'])) {
-                                $maTG = $_GET['matgia'];
-
-                                // Tạo một đối tượng Sach
-                                $book = new Sach($PDO);
-
-                                // Gọi hàm findbasedonAuthor() để lấy danh sách các sách của tác giả
-                                $books = $book->findbasedonAuthor($maTG);
-
-                                // Kiểm tra xem có sách nào của tác giả đó hay không
-                                if ($books) {
-                                    echo "<h2>Danh sách sách của tác giả:</h2>";
-                                    echo "<ul>";
-                                    foreach ($books as $book) {
-                                        echo "<li>{$book->hinhAnh}</li>";
-                                        echo "<li>{$book->tenSach}</li>";
-                                        echo "<li>{$book->giaSach}</li>";
-                                    }
-                                    echo "</ul>";
-                                } else {
-                                    echo "Không tìm thấy sách của tác giả này.";
+                            require '../src/myconnect.php';
+                            $layTG = "SELECT maTG,tenTG from tacGia";
+                            $rstenTG = $conn->query($layTG);
+                            if ($rstenTG->num_rows > 0) {
+                                while ($row = $rstenTG->fetch_assoc()) {
+                            ?>
+                                    <li><a href="category.php?maTG=<?php echo $row["maTG"] ?>"><?php echo $row["tenTG"] ?></a></li>
+                            <?php
                                 }
                             }
                             ?>
@@ -202,42 +144,14 @@ if (session_status() === PHP_SESSION_NONE) {
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php
-                            require_once __DIR__ . '/../bootstrap.php';
-
-                            // Truy vấn cơ sở dữ liệu để lấy danh sách nhà xuất bản
-                            $statement = $PDO->prepare('SELECT maNXB, tenNXB FROM nhaXuatBan');
-                            $statement->execute();
-                            $publishers = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-                            // Hiển thị danh sách nhà xuất bản dưới dạng liên kết trên thanh nav
-                            echo '<ul>';
-                            foreach ($publishers as $publisher) {
-                                echo "<li><a href=\"category.php?manhaxb={$publisher['maNXB']}\">{$publisher['tenNXB']}</a></li>";
-                            }
-                            echo '</ul>';
-
-                            // Kiểm tra xem người dùng đã chọn một nhà xuất bản hay chưa
-                            if (isset($_GET['manhaxb']) && is_numeric($_GET['manhaxb'])) {
-                                $maNXB = $_GET['manhaxb'];
-
-                                // Tạo một đối tượng Sach
-                                $book = new Sach($PDO);
-
-                                // Gọi hàm findbasedonPublisher() để lấy danh sách các sách của nhà xuất bản
-                                $books = $book->findbasedonPublisher($maNXB);
-
-                                // Kiểm tra xem có sách nào của nhà xuất bản đó hay không
-                                if ($books) {
-                                    echo "<h2>Danh sách sách của nhà xuất bản:</h2>";
-                                    echo "<ul>";
-                                    foreach ($books as $book) {
-                                        echo "<li>{$book->hinhAnh}</li>";
-                                        echo "<li>{$book->tenSach}</li>";
-                                        echo "<li>{$book->giaSach}</li>";
-                                    }
-                                    echo "</ul>";
-                                } else {
-                                    echo "Không tìm thấy sách của nhà xuất bản này.";
+                            require '../src/myconnect.php';
+                            $layNXB = "SELECT maNXB,tenNXB from nhaXuatBan";
+                            $rstenNXB = $conn->query($layNXB);
+                            if ($rstenNXB->num_rows > 0) {
+                                while ($row = $rstenNXB->fetch_assoc()) {
+                            ?>
+                                    <li><a href="category.php?maNXB=<?php echo $row["maNXB"] ?>"><?php echo $row["tenNXB"] ?></a></li>
+                            <?php
                                 }
                             }
                             ?>

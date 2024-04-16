@@ -49,32 +49,32 @@ include "../src/partials/ad_head.php";
                                 <form class="form-horizontal ad_themsp" method="POST" action="<?php include 'ad_xulyluasp.php' ?>" enctype="multipart/form-data">
                                     <div class="box-body">
                                         <div class="form-group d-flex ">
-                                            <label for="idsach" class="col-sm-2 control-label text-center">ID</label>
-                                            <div class="col-sm-10">
+                                            <label for="idsach" class="offset-sm-2 col-sm-1 control-label ">ID: </label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="maSach" placeholder="Nhập ID sách" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex ">
-                                            <label for="inputEmail3" class="col-sm-2 control-label text-center">Tên</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputEmail3" class="offset-sm-2 col-sm-1 control-label ">Tên: </label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="name" placeholder="Nhập tên sách" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Giá</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Giá: </label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="gia" placeholder="Nhập giá sách">
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Hình ảnh</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Hình ảnh: </label>
+                                            <div class="col-sm-6">
                                                 <input type="file" class="form-control" placeholder="Chọn tiệp" name="hinhanh" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Tác giả</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Tác giả: </label>
+                                            <div class="col-sm-6">
                                                 <select class="form-control select2" style="width: 100%;" name="matg">
                                                     <option selected="selected" value="3">Chọn Tác giả</option>
                                                     <?php
@@ -94,8 +94,8 @@ include "../src/partials/ad_head.php";
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Thể loại</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Thể loại: </label>
+                                            <div class="col-sm-6">
                                                 <select class="form-control select2" style="width: 100%;" name="matl">
                                                     <option selected="selected" value="3">Chọn thể loại</option>
                                                     <?php
@@ -116,8 +116,8 @@ include "../src/partials/ad_head.php";
                                         </div>
 
                                         <div class="form-group d-flex">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Nhà xuất bản</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Nhà xuất bản: </label>
+                                            <div class="col-sm-6">
                                                 <select class="form-control select2" style="width: 100%;" name="manhasx">
                                                     <option selected="selected" value="3">Chọn Nhà xuất bản</option>
                                                     <?php
@@ -137,14 +137,14 @@ include "../src/partials/ad_head.php";
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Năm xuất bản</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Năm xuất bản: </label>
+                                            <div class="col-sm-6">
                                                 <input type="number" class="form-control" name="namxb" placeholder="Nhập năm xuất bản">
                                             </div>
                                         </div>
                                         <div class="form-group d-flex">
-                                            <label for="inputPassword3" class="col-sm-2 control-label text-center">Mô tả</label>
-                                            <div class="col-sm-10">
+                                            <label for="inputPassword3" class="offset-sm-2 col-sm-1 control-label ">Mô tả: </label>
+                                            <div class="col-sm-6">
                                                 <textarea id="editor1" name="editor1" rows="10" cols="80">
                                                     Nhập mô tả
                                                  </textarea>

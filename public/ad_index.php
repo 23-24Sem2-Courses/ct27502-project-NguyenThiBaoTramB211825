@@ -4,9 +4,17 @@ ob_start();
 <?php
 include "../src/partials/ad_head.php";
 ?>
-<body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
+<?php
+require "ad_loginAdmin.php";
+if (!isset($_SESSION['tenDN']))
+{
+    header("Location:ad_login.php");
+}
 
+?>
+
+<body >
+    <div class="wrapper">
         <?php
         include "../src/partials/ad_header.php";
         ?>
@@ -120,11 +128,6 @@ include "../src/partials/ad_head.php";
 
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->
-
-
-            <img src="images/anh1.png" alt=" Sách">
-            <img src="./hoa.jpg" alt="Hoa">
-
 
         </div>
 

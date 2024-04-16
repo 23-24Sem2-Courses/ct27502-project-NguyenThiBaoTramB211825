@@ -2,12 +2,11 @@
 ob_start();
 ?>
 
-
 <?php
 include "../src/partials/ad_head.php";
 ?>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body>
     <div class="wrapper">
         <?php
         include "../src/partials/ad_header.php";
@@ -31,6 +30,7 @@ include "../src/partials/ad_head.php";
                         <li class="active">> Quản lý tác giả</li>
                     </ol>
                 </section>
+                <hr>
 
                 <!-- Main content -->
                 <section class="content">

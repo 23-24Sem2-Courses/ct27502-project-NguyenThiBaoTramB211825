@@ -3,7 +3,7 @@
 if (isset($_POST['Edit'])) {
     require '../src/myconnect.php';
     // Lấy các giá trị từ form
-    $manhasx = $_POST['id'];
+    $manhasx = $_POST['maNXB'];
     $name = $_POST['name'];
     $diachi = $_POST['diachi'];
     $email = $_POST['email'];
@@ -24,3 +24,4 @@ if (isset($_POST['Edit'])) {
     }
     $conn->close();
 }
+

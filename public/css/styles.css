@@ -2,28 +2,32 @@
     body,
     .container-fluid {
         height: 100%;
+        width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .col-md-2 .sidebar{
         height: 100%;
     }
 
-.container-fluid{
-    margin: 0;
-    padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 .bg-header{
-    background-color: #3c8dbc;
+    background-color: #0b4160;
 }
 .bg-nav{
-    background-color: #1f6e9c;
+    background-color: #78b6db;
 }
+
 .header {
     font-display: block;
     text-align: center;
     font-size: 25px;
     
 }
+
+
+/* Thanh .sidebar */
+
 .sidebar{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: #222d32;
@@ -34,19 +38,18 @@
 }
 .sidebar-header{
     font-size: 20px;
-    margin: 4px;
+    margin: 0px;
     text-align: center;
     font-weight: bold;
     color: rgb(219, 228, 237);
-
-
+    padding-top: 7px;
 }
 .sidebar-menu{
     font-size: 15xp;
-     
 }
 .sidebar-menu .menu-list{
-    margin: 5px;
+    /* margin: 5px; */
+    padding: 2px;
 
 }
 .sidebar-menu .menu-list li{
@@ -81,14 +84,11 @@
 .main-footer {
     position: fixed;
     bottom: 0px;
+    height: auto;
     width: 100%;
     background-color: #f8f9fa;
-    /* Màu nền của footer */
-    /* Khoảng cách giữa nội dung và viền của footer */
     text-align: center;
-    /* Căn giữa nội dung trong footer */
     border-top: 1px solid #ccc;
-    /* Viền phân chia giữa footer và nội dung */
 }
 
 
@@ -158,3 +158,35 @@ Trang quản lý sách */
     margin: 6px;
     padding: 5px;
 }
+
+#toltal {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: end;
+    text-decoration: overline;
+    color: black;
+    font-weight: 700;
+    margin: 5px;
+    padding: 5px;
+}
+
+
+
+/* Trang login */
+
+/* .container_adlogin{
+    font-weight: 25px;
+    display: block;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.form-box{
+    height: 50px;
+  
+
+}
+.container_adlogin .form-box .form-top{
+    border-radius: 1px solid black;
+} */

@@ -30,7 +30,7 @@ include "../src/partials/ad_head.php";
                         <li class="active"> > Thêm</li>
                     </ol>
                 </section>
-
+                <hr>
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
@@ -44,26 +44,26 @@ include "../src/partials/ad_head.php";
                                 <form class="form-horizontal" method="POST" action="<?php include 'ad_xulynxb.php' ?>">
                                     <div class="box-body m-5">
                                         <div class="form-group d-flex m-2 ">
-                                            <label for="idsach" class="col-sm-2 control-label text-center">ID</label>
-                                            <div class="col-sm-10">
+                                            <label for="idsach" class="offset-sm-2 col-sm-1 control-label">ID</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="manhasx" placeholder="Nhập ID nhà xuất bản" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex  m-2">
-                                            <label for="idsach" class="col-sm-2 control-label text-center">Tên NXB</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="name" placeholder="Nhập ten nhà xuất bản" required>
+                                            <label for="idsach" class="offset-sm-2 col-sm-1 control-label">Tên NXB</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" name="name" placeholder="Nhập tên nhà xuất bản" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex m-2 ">
-                                            <label for="idsach" class="col-sm-2 control-label text-center">Địa chỉ</label>
-                                            <div class="col-sm-10">
+                                            <label for="idsach" class="offset-sm-2 col-sm-1 control-label">Địa chỉ</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="diachi" placeholder="Nhập địa chỉ nhà xuất bản" required>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex m-2 ">
-                                            <label for="idsach" class="col-sm-2 control-label text-center">Email</label>
-                                            <div class="col-sm-10">
+                                            <label for="idsach" class="offset-sm-2 col-sm-1 control-label">Email</label>
+                                            <div class="col-sm-6">
                                                 <input type="text" class="form-control" name="email" placeholder="Nhập email nhà xuất bản" required>
                                             </div>
                                         </div>
